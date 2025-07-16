@@ -140,4 +140,45 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".firstscreen__link").classList.add("link__anim")
     }, 5000)
 
-}); 
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const lenis = new Lenis({
+        wrapper: document.querySelector('main'),
+        content: document.querySelector('main'),
+        duration: 1.2,
+        smooth: true
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    gsap.to('.folder--top', {
+        yPercent: 100,
+        scrollTrigger: {
+            trigger: '.folder-swap',
+            start: 'top bottom',
+            end: 'top top',
+            scrub: true
+        }
+    });
+
+    gsap.to('.folder--bottom', {
+        yPercent: -100,
+        scrollTrigger: {
+            trigger: '.folder-swap',
+            start: 'top bottom',
+            end: 'top top',
+            scrub: true
+        }
+    });
+});

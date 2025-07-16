@@ -777,3 +777,32 @@ body>.bg {
     }
 
 }
+
+/* Section with folder swap animation */
+.folder-swap {
+    width: 98vw;
+    height: 97vh;
+    margin: 1.5vh 1vw;
+    background-color: var(--sec-color);
+    border-radius: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.folder {
+    position: absolute;
+    font-size: calc(var(--offset) * 8);
+    color: var(--main-color);
+}
+
+.folder--top {
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.folder--bottom {
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+}
