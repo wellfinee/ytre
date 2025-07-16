@@ -162,23 +162,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     gsap.ticker.lagSmoothing(0);
 
-    gsap.to('.folder--top', {
-        yPercent: 100,
+    const swapTl = gsap.timeline({
         scrollTrigger: {
-            trigger: '.folder-swap',
-            start: 'top bottom',
-            end: 'top top',
-            scrub: true
+            trigger: '.firstscreen',
+            start: 'top top',
+            end: '+=100%',
+            scrub: true,
+            pin: true
         }
     });
 
-    gsap.to('.folder--bottom', {
-        yPercent: -100,
-        scrollTrigger: {
-            trigger: '.folder-swap',
-            start: 'top bottom',
-            end: 'top top',
-            scrub: true
-        }
-    });
+    swapTl.to('.firstscreen', { y: '100vh', ease: 'none' })
+        .from('.secondscreen', { y: '100vh', ease: 'none' }, 0);
 });
